@@ -1,0 +1,14 @@
+.home-title {
+    margin-top: 4ch;
+    text-align: center;
+}
+
+.home-button {
+    width: 50%;
+    align-self: center;
+}
+
+.base {
+    /* background-image: url("/images/blue-snow.webp"); */
+    background-color: "red";
+}
