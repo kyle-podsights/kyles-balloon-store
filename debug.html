@@ -82,6 +82,14 @@
             <button type="button" class="btn btn-primary home-button" onclick="location.href='alternate_pixel.html'">
                 Emmett's Test Brand
             </button>
+            <button type="button" class="btn btn-primary home-button" onClick="twoPageViewDiffPixel()">
+                Two Page Views - Different Pixels
+            </button>
+            <p class="btn-note">(Two Page Views - Different Pixels) - lumps events under same pixel key when they are fired in tandem</p>
+            <button type="button" class="btn btn-primary home-button" onClick="emmettsBrandPageView()">
+                Fire Page View Emmett's Brand
+            </button>
+            <p class="btn-note">(Fire Page View Emmett's Brand) - since my pixel's key was already configured on the initial page view the following conf doesn't update the key in the call to Emmett's brand</p>
 
         </div>
     </main>
@@ -224,6 +232,67 @@
         function gtmNewsletterSignupEvent() {
             console.log("Triggered GTM Newsletter Signup")
             dataLayer.push({ "event": "newslettersignup-debug-click" })
+        }
+
+        function twoPageViewDiffPixel() {
+            // Trigger Page view for emmett's brand
+            (function (w, d) {
+                var id = 'pdst-capture', n = 'script';
+                if (!d.getElementById(id)) {
+                    w.pdst =
+                        w.pdst ||
+                        function () {
+                            (w.pdst.q = w.pdst.q || []).push(arguments);
+                        };
+                    var e = d.createElement(n); e.id = id; e.async = 1;
+                    e.src = 'https://cdn.pdst.fm/ping.min.js';
+                    var s = d.getElementsByTagName(n)[0];
+                    s.parentNode.insertBefore(e, s);
+                }
+                w.pdst('conf', { key: 'fdfb72a9fc4a4b40a5a20de7dec6b230' });
+                w.pdst("view");
+
+            })(window, document);
+            
+            // Trigger page view for kyle's brand
+            (function (w, d) {
+                var id = "pdst-capture", n = "script";
+                if (!d.getElementById(id)) {
+                    w.pdst =
+                        w.pdst ||
+                        function () {
+                            (w.pdst.q = w.pdst.q || []).push(arguments);
+                        };
+                    var e = d.createElement(n); e.id = id; e.async = 1;
+                    e.src = "https://cdn.pdst.fm/ping.min.js";
+                    var s = d.getElementsByTagName(n)[0];
+                    s.parentNode.insertBefore(e, s);
+                }
+                // Commenting out the conf since it gets set on initial page load
+                w.pdst("conf", { key: "cee92226ff354219945e4e06c9dce597" });
+                w.pdst("view");
+            })(window, document);
+        }
+
+        function emmettsBrandPageView() {
+            // Trigger Page view for emmett's brand
+            (function (w, d) {
+                var id = 'pdst-capture', n = 'script';
+                if (!d.getElementById(id)) {
+                    w.pdst =
+                        w.pdst ||
+                        function () {
+                            (w.pdst.q = w.pdst.q || []).push(arguments);
+                        };
+                    var e = d.createElement(n); e.id = id; e.async = 1;
+                    e.src = 'https://cdn.pdst.fm/ping.min.js';
+                    var s = d.getElementsByTagName(n)[0];
+                    s.parentNode.insertBefore(e, s);
+                }
+                w.pdst('conf', { key: 'fdfb72a9fc4a4b40a5a20de7dec6b230' });
+                w.pdst("view");
+
+            })(window, document);
         }
     </script>
 
