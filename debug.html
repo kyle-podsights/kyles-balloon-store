@@ -20,6 +20,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="styles.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -82,15 +83,12 @@
             <button type="button" class="btn btn-primary home-button" onclick="location.href='alternate_pixel.html'">
                 Emmett's Test Brand
             </button>
-            <button type="button" class="btn btn-primary home-button" onClick="twoPageViewDiffPixel()">
+            <button type="button" class="btn btn-danger home-button" onClick="twoPageViewDiffPixel()" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Lumps events under same pixel key when they are fired in tandem">
                 Two Page Views - Different Pixels
             </button>
-            <p class="btn-note">(Two Page Views - Different Pixels) - lumps events under same pixel key when they are fired in tandem</p>
-            <button type="button" class="btn btn-primary home-button" onClick="emmettsBrandPageView()">
+            <button type="button" class="btn btn-danger home-button" onClick="emmettsBrandPageView()" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Since my pixel's key was already configured on the initial page view the following conf doesn't update the key in the call to Emmett's brand">
                 Fire Page View Emmett's Brand
             </button>
-            <p class="btn-note">(Fire Page View Emmett's Brand) - since my pixel's key was already configured on the initial page view the following conf doesn't update the key in the call to Emmett's brand</p>
-
         </div>
     </main>
 
@@ -99,6 +97,10 @@
         crossorigin="anonymous"></script>
 
     <script>
+        // Enable Tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
         // Functions for various cases
         function pageView() {
             console.log("Triggered Page View");
