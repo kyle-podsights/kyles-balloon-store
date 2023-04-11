@@ -71,6 +71,9 @@
             <button type="button" class="btn btn-primary home-button" onClick="gtmPageView()">
                 GTM Page View
             </button>
+            <button type="button" class="btn btn-primary home-button" onClick="gtmPageViewAlias()">
+                GTM Page View with Alias
+            </button>
             <button type="button" class="btn btn-primary home-button" onClick="gtmPurchaseEvent()">
                 GTM Purchase Event
             </button>
@@ -88,6 +91,12 @@
             </button>
             <button type="button" class="btn btn-danger home-button" onClick="emmettsBrandPageView()" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Since the first pixel's key was already configured on the initial page view the following conf doesn't update the key when this event fires. So clicking this will send an event to the first pixel.">
                 Fire Page View Emmett's Brand
+            </button>
+            <button type="button" class="btn btn-primary home-button" onclick="location.href='page_view_body.html'">
+                Page View Body
+            </button>
+            <button type="button" class="btn btn-primary home-button" onclick="location.href='page_view_head.html'">
+                Page View Head
             </button>
         </div>
     </main>
@@ -224,6 +233,11 @@
         function gtmPageView() {
             console.log("Triggered GTM Page View")
             dataLayer.push({ "event": "pageview-debug-click" })
+        }
+
+        function gtmPageViewAlias() {
+            console.log("Triggered GTM Page View with Alias")
+            dataLayer.push({ "event": "pageview-alias-debug-click" })
         }
 
         function gtmPurchaseEvent() {
