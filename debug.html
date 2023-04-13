@@ -242,7 +242,7 @@
 
         function gtmPurchaseEvent() {
             console.log("Triggered GTM Purchase Event")
-            dataLayer.push({ "event": "purchaseevent-debug-click" })
+            dataLayer.push({ "event": "purchaseevent-debug-click", "value": Math.random() * 100 })
         }
 
         function gtmNewsletterSignupEvent() {
